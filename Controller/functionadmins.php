@@ -8,17 +8,26 @@
 	        $this->ketNoi = ketnoi::getConnection();
 	    }
 
-        public function ktraadmin($user, $pass)
+        function laychitietadmin($username, $password)
         {
-            session_start();
+            $objadmin = new dataadmins();
 
-            $sql = "select * from admins where username='$user' and password='$pass'";
+            $SQL = "Select * from admins where username='".$username."'and password='".$password."'";
 
-            $q = mysqli_query($this->ketNoi,$sql);
+            $q = mysqli_query($this->ketNoi,$SQL);
 
-            $row = mysqli_fetch_array($q);
+            while($row = mysqli_fetch_array($q))
+            {
+                $objadmin = new dataadmins();
 
-            $_SESSION['username'] = $row['username'];
+                $objadmin->id = $row['id'];
+
+                $objadmin->username = $row['username'];
+            }
+
+            $this->ketNoi->close();
+
+            return $objadmin;
         }
 	}
 ?>

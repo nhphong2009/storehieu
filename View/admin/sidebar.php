@@ -4,7 +4,7 @@
     <a href="./admin.php" class="brand-link">
         <img src="../public/admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
              style="opacity: .8">
-        <span class="brand-text font-weight-light">Admin</span>
+        <span class="brand-text font-weight-light">Trang quản trị</span>
     </a>
 
     <!-- Sidebar -->
@@ -12,7 +12,8 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="info">
-                <a href="#" class="d-block">Hieu</a>
+                <a href="#" class="d-block"><?php echo $_SESSION['username']; ?></a>
+                <a href="./logout.php" class="d-block">Đăng xuất</a>
             </div>
         </div>
 
