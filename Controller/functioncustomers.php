@@ -118,36 +118,28 @@
 
 		function laychitietkhachhangtheotaikhoanmatkhau($username, $password)
 		{
-			$objkhachhang = new datacustomers();
-
-            $SQL = "Select * from customers where username='".$username."' and password='".$password."'";
-
-            $q = mysqli_query($this->ketNoi,$SQL);
-
-            while($row = mysqli_fetch_array($q))
-            {
-                $objkhachhang = new datacustomers();
-
-                $objkhachhang->id = $row['id'];
-
-                $objkhachhang->username = $row['username'];
-
-                $objkhachhang->name = $row['name'];
-
-                $objkhachhang->email = $row['email'];
-
-                $objkhachhang->phone = $row['phone'];
-
-                $objkhachhang->address = $row['address'];
-
-                $objkhachhang->created_at = $row['created_at'];
-
-                $objkhachhang->updated_at = $row['updated_at'];
+		    session_start();
+            $SQL = "Select * from customers where username='".$username."'";
+            $result = mysqli_query($this->ketNoi, $SQL);
+            if(mysqli_num_rows($result) > 0){
+                $row = mysqli_fetch_assoc($result);
+                if ($password == $row['password']){
+                    $_SESSION['name'] = $row['name'];
+                    $_SESSION['email'] = $row['email'];
+                    $_SESSION['phone'] = $row['phone'];
+                    $_SESSION['address'] = $row['address'];
+                    echo "<script>alert('Đăng nhập thành công');history.back();history.back();</script>";
+                    return true;
+                }
+                else {
+                    echo "<script>alert('Sai tài khoản hoặc mật khẩu');history.back();</script>";
+                    return false;
+                }
             }
-
-            $this->ketNoi->close();
-
-            return $objkhachhang;
+            else{
+                echo "<script>alert('Sai tài khoản hoặc mật khẩu');history.back();</script>";
+                return false;
+            }
 		}
 
 		function laychitietkhachhangtheoemail($email)

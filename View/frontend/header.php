@@ -66,7 +66,7 @@ $tuKhoa = "";
             <ul class="header-links pull-right">
                 <li><a href="#"><i class="fa fa-dollar"></i> VND</a></li>
                 <?php
-                    if(empty($_SESSION)) {
+                    if(empty($_SESSION) || !isset($_SESSION['email'])) {
                         ?>
                         <li><a href="../../View/frontend/login.php"><i class="fa fa-sign-in"></i> Đăng nhập</a></li>
                         <li><a href="../../View/frontend/register.php"><i class="fa fa-registered"></i> Đăng ký</a></li>

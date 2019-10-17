@@ -6,25 +6,12 @@ include ('../../Controller/functionadmins.php');
 session_start();
 
 $servicecus = new functionadmins();
-$username = $_POST['username']; $password = $_POST['password'];
-if(isset($_POST['btnOK'])) {
-    if ($username == "" && $password == "") {
-        ?>
-        <script>
-            alert('Vui lòng nhập tài khoản và mật khẩu');history.back();
-        </script>
-        <?php
+if(!isset($_SESSION['username'])) {
+    if (isset($_POST['btnOK'])) {
+        $servicecus->laychitietadmin($_POST['username'], $_POST['password']);
     }
-    else{
-        $cus = $servicecus->laychitietadmin($username, $password);
-        $_SESSION['username'] = $cus->username;
-        ?>
-        <script>
-            alert('Đăng nhập thành công');
-            window.location.href = 'http://storehieu.local.com/View/admin/admin.php';
-        </script>
-        <?php
-    }
+} else {
+    header('location: http://storehieu.local.com/View/admin/admin.php');
 }
 ?>
 <!DOCTYPE html>

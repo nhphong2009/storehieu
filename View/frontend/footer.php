@@ -55,7 +55,7 @@
                             <?php
                                 if(!empty($_SESSION)) {
                                     ?>
-                                    <li><a href="../../View/frontend/userdetail.php">Tài khoản</a></li>
+                                    <li><a href="../../View/frontend/userdetail.php?email=<?php echo $_SESSION['email']; ?>">Tài khoản</a></li>
                                     <?php
                                 }
                                 else {

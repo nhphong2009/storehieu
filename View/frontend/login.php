@@ -1,28 +1,12 @@
 <?php include('./header.php'); ?>
 <?php
     $servicecus = new functioncustomers();
-    $username = $_POST['username']; $password = $_POST['password'];
-    if(isset($_POST['btnOK'])) {
-        if ($username == "" && $password == "") {
-            ?>
-            <script>
-                alert('Vui lòng nhập tài khoản và mật khẩu');history.back();
-            </script>
-            <?php
+    if(!isset($_SESSION['email'])) {
+        if (isset($_POST['btnOK'])) {
+            $servicecus->laychitietkhachhangtheotaikhoanmatkhau($_POST['username'], $_POST['password']);
         }
-        else{
-            $cus = $servicecus->laychitietkhachhangtheotaikhoanmatkhau($username, $password);
-            $_SESSION['name'] = $cus->name;
-            $_SESSION['email'] = $cus->email;
-            $_SESSION['phone'] = $cus->phone;
-            $_SESSION['address'] = $cus->address;
-            ?>
-            <script>
-                alert('Đăng nhập thành công');
-                window.location.href = 'http://storehieu.local.com/View/frontend/index.php';
-            </script>
-            <?php
-        }
+    } else {
+        echo "<script>history.back();</script>";
     }
 ?>
 <!-- BREADCRUMB -->

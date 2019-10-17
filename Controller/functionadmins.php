@@ -10,24 +10,25 @@
 
         function laychitietadmin($username, $password)
         {
-            $objadmin = new dataadmins();
-
-            $SQL = "Select * from admins where username='".$username."'and password='".$password."'";
-
-            $q = mysqli_query($this->ketNoi,$SQL);
-
-            while($row = mysqli_fetch_array($q))
-            {
-                $objadmin = new dataadmins();
-
-                $objadmin->id = $row['id'];
-
-                $objadmin->username = $row['username'];
+            session_start();
+            $SQL = "Select * from admins where username='".$username."'";
+            $result = mysqli_query($this->ketNoi, $SQL);
+            if(mysqli_num_rows($result) > 0){
+                $row = mysqli_fetch_assoc($result);
+                if ($password == $row['password']){
+                    $_SESSION['username'] = $row['username'];
+                    echo "<script>alert('Đăng nhập thành công');window.location.href='http://storehieu.local.com/View/admin/admin.php';</script>";
+                    return true;
+                }
+                else {
+                    echo "<script>alert('Sai tài khoản hoặc mật khẩu');history.back();</script>";
+                    return false;
+                }
             }
-
-            $this->ketNoi->close();
-
-            return $objadmin;
+            else{
+                echo "<script>alert('Sai tài khoản hoặc mật khẩu');history.back();</script>";
+                return false;
+            }
         }
 	}
 ?>
