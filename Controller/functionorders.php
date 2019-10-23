@@ -219,11 +219,6 @@
             $q = mysqli_query($this->ketNoi,$sql);
             
             $this->ketNoi->close();
-       
-            if($q)
-            {
-                echo "<script>alert('Cập nhật đơn hàng thành công');</script>";
-            }
         }
         
         public function xoadonhang($id)
