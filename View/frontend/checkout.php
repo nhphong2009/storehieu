@@ -7,8 +7,8 @@
         $phone = 0;
         $email = "";
         $address = "";
-        $serviceorder = new functionorders();
         if (!empty($_SESSION['email'])) {
+            $serviceorder = new functionorders();
             $name = $_SESSION['name'];
             $phone = "0" . $_SESSION['phone'];
             $email = $_SESSION['email'];
@@ -50,36 +50,39 @@
                 }
             }
         } else {
+            $serviceorder1 = new functionorders();
             if (isset($_POST['btnThanhToan'])) {
                 if ($_POST['name'] == null && $_POST['phone'] == 0 && $_POST['email'] == null && $_POST['address'] == null) {
                     echo "<script>alert('Vui lòng điền đầy đủ thông tin');history.back();</script>";
                 } else {
-                    $objorder = new dataorders();
+                    $objorder1 = new dataorders();
                     $code = rand(1, 10000);
-                    $objorder->code = $code;
-                    $objorder->customer_name = $_POST['name'];
-                    $objorder->customer_phone = $_POST['phone'];
-                    $objorder->customer_email = $_POST['email'];
-                    $objorder->customer_address = $_POST['address'];
-                    $objorder->status = "Đang chờ";
+                    $objorder1->code = $code;
+                    $objorder1->customer_name = $_POST['name'];
+                    $objorder1->customer_phone = $_POST['phone'];
+                    $objorder1->customer_email = $_POST['email'];
+                    $objorder1->customer_address = $_POST['address'];
+                    $objorder1->status = "Đang chờ";
 
-                    $objorder->created_at = date('Y-m-d H:i:s');
-                    $objorder->updated_at = date('Y-m-d H:i:s');
-                    $serviceorder->themMoi($objorder);
+                    $objorder1->created_at = date('Y-m-d H:i:s');
+                    $objorder1->updated_at = date('Y-m-d H:i:s');
+                    $serviceorder1->themMoi($objorder1);
 
                     foreach ($_SESSION['shopping_cart'] as $shopping_cart) {
-                        $serviceorderdetail = new functionorderdetails();
-                        $serviceorder1 = new functionorders();
-                        $fncorde = $serviceorder1->laychitietdonhangtheocode($code);
-                        $objorderdetail = new dataorderdetails();
-                        $proslug = $serviceproduct->laychitietsanphamtheoslug($shopping_cart['product_slug']);
-                        $objorderdetail->product_id = $proslug->id;
-                        $objorderdetail->quantity = $shopping_cart['product_quantity'];
-                        $objorderdetail->order_id = $fncorde->id;
+                        $serviceproduct1 = new functionproducts();
+                        $serviceorderdetail1 = new functionorderdetails();
+                        $serviceorder2 = new functionorders();
+                        $fncorde1 = $serviceorder2->laychitietdonhangtheocode($code);
+                        $objorderdetail1 = new dataorderdetails();
+                        $proslug1 = $serviceproduct1->laychitietsanphamtheoslug($shopping_cart['product_slug']);
+                        $objorderdetail1->product_id = $proslug1->id;
+                        $objorderdetail1->quantity = $shopping_cart['product_quantity'];
+                        $objorderdetail1->price = $shopping_cart['product_price'];
+                        $objorderdetail1->order_id = $fncorde1->id;
 
-                        $objorderdetail->created_at = date('Y-m-d H:i:s');
-                        $objorderdetail->updated_at = date('Y-m-d H:i:s');
-                        $serviceorderdetail->themMoi($objorderdetail);
+                        $objorderdetail1->created_at = date('Y-m-d H:i:s');
+                        $objorderdetail1->updated_at = date('Y-m-d H:i:s');
+                        $serviceorderdetail1->themMoi($objorderdetail1);
                     }
                 }
             }
