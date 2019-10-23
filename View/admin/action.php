@@ -1,7 +1,11 @@
 <?php
 include "../../Model/ketnoi.php";
 include "../../Model/dataorders.php";
+include "../../Model/dataproducts.php";
+include "../../Model/dataorderdetails.php";
 include "../../Controller/functionorders.php";
+include "../../Controller/functionproducts.php";
+include "../../Controller/functionorderdetails.php";
 
 if(isset($_POST["action"]))
 {
@@ -49,6 +53,18 @@ if(isset($_POST["action"]))
             $objorder->updated_at = date('Y-m-d H:i:s');
             $serviceorder1->capNhat($objorder);
             echo "Cập nhật đơn hàng thành công";
+            $serviceorderdetail = new functionorderdetails();
+            $orderdetails = $serviceorderdetail->laydonhangtheoid($order->id);
+            foreach($orderdetails as $orderdetail) {
+                $serviceproduct = new functionproducts();
+                $getQty = $serviceproduct->laychitietsanpham($orderdetail->product_id);
+                $serviceproduct1 = new functionproducts();
+                $objpro = new dataproducts();
+                $objpro->id = $orderdetail->product_id;
+                $objpro->quantity = $getQty->quantity - $orderdetail->quantity;
+                $objpro->updated_at = date('Y-m-d H:i:s');
+                $serviceproduct1->capNhatsoluong($objpro);
+            }
         } else {
             echo "fail";
         }

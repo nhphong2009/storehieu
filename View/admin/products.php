@@ -96,5 +96,5 @@ $pros = $service->timkiemsanpham($tuKhoa);
     $('#sale_price_edit').keyup(function(){
         var sale_price = numeral($(this).val()).format('0,0');
         $(this).val(sale_price)
-    })
+    });
 </script>

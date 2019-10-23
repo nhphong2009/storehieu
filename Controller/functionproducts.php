@@ -303,6 +303,15 @@
                 echo "<script>alert('Cập nhật sản phẩm thành công');history.back();</script>";
             }
         }
+
+        public function capNhatsoluong($sanpham)
+        {
+            $sql = "Update products set quantity = '$sanpham->quantity', updated_at = '$sanpham->updated_at' where id = '$sanpham->id'";
+
+            mysqli_query($this->ketNoi,$sql);
+
+            $this->ketNoi->close();
+        }
         
         public function xoasanpham($id)
         {
