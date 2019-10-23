@@ -53,15 +53,15 @@
                         <h3 class="footer-title">Dịch vụ</h3>
                         <ul class="footer-links">
                             <?php
-                                if(!empty($_SESSION)) {
+                                if(empty($_SESSION) || !isset($_SESSION['email'])) {
                                     ?>
-                                    <li><a href="../../View/frontend/userdetail.php?email=<?php echo $_SESSION['email']; ?>">Tài khoản</a></li>
+                                    <li><a href="../../View/frontend/login.php">Đăng nhập</a></li>
+                                    <li><a href="../../View/frontend/register.php">Đăng ký</a></li>
                                     <?php
                                 }
                                 else {
                                     ?>
-                                    <li><a href="../../View/frontend/login.php">Đăng nhập</a></li>
-                                    <li><a href="../../View/frontend/register.php">Đăng ký</a></li>
+                                    <li><a href="../../View/frontend/userdetail.php?email=<?php echo $_SESSION['email']; ?>">Tài khoản</a></li>
                                     <?php
                                 }
                             ?>
