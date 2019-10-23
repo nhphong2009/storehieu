@@ -171,7 +171,7 @@ CREATE TABLE `customers` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -196,10 +196,11 @@ CREATE TABLE `order_details` (
   `order_id` int(11) DEFAULT NULL,
   `product_id` int(11) DEFAULT NULL,
   `quantity` tinyint(4) DEFAULT NULL,
+  `price` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -208,6 +209,7 @@ CREATE TABLE `order_details` (
 
 LOCK TABLES `order_details` WRITE;
 /*!40000 ALTER TABLE `order_details` DISABLE KEYS */;
+INSERT INTO `order_details` VALUES (12,13,6,1,3600000,'2019-10-23 02:54:23','2019-10-23 02:54:23'),(13,13,13,1,2200000,'2019-10-23 02:54:23','2019-10-23 02:54:23'),(14,14,4,1,2200000,'2019-10-23 03:48:10','2019-10-23 03:48:10'),(15,14,17,1,3700000,'2019-10-23 03:48:10','2019-10-23 03:48:10'),(16,14,28,1,1850000,'2019-10-23 03:48:10','2019-10-23 03:48:10'),(17,14,30,1,1290000,'2019-10-23 03:48:10','2019-10-23 03:48:10');
 /*!40000 ALTER TABLE `order_details` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -223,12 +225,13 @@ CREATE TABLE `orders` (
   `code` int(11) DEFAULT NULL,
   `customer_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `customer_phone` int(11) DEFAULT NULL,
+  `customer_email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `customer_address` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `status` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -237,6 +240,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` VALUES (13,3375,'Nguyễn Minh Hiếu',124578541,'hieu123@gmail.com','Hà Nội','Đang chờ','2019-10-23 02:54:23','2019-10-23 02:54:23'),(14,5520,'Nguyễn Minh Hiếu',124578541,'hieu123@gmail.com','Hà Nội','Đang chờ','2019-10-23 03:48:10','2019-10-23 05:04:37');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -263,7 +267,7 @@ CREATE TABLE `product_images` (
 
 LOCK TABLES `product_images` WRITE;
 /*!40000 ALTER TABLE `product_images` DISABLE KEYS */;
-INSERT INTO `product_images` VALUES (3,10,'3.jpg','2019-10-14 03:38:28','2019-10-14 03:40:21'),(4,10,'2.jpg','2019-10-14 03:38:35','2019-10-14 03:38:35'),(5,23,'ram-asgard-loki-8g-bus-2666-rgb-2.jpg','2019-10-14 04:42:48','2019-10-14 04:42:48'),(6,22,'ram-kingson-8g-hyper-x-2666-nhap-khau-2.jpg','2019-10-14 04:43:30','2019-10-14 04:43:30'),(9,1,'10-14-2019_17:45:25i5-3570.jpg','2019-10-14 10:45:25','2019-10-14 10:45:25'),(10,2,'10-14-2019_17:45:47R7-3700X.jpg','2019-10-14 10:45:47','2019-10-14 10:45:47'),(11,3,'10-14-2019_17:46:00i5-3470.jpg','2019-10-14 10:46:00','2019-10-14 10:46:00'),(12,4,'10-14-2019_17:46:08i7-3770.jpg','2019-10-14 10:46:08','2019-10-14 10:46:08'),(13,5,'10-14-2019_17:46:19i9-9900K.jpg','2019-10-14 10:46:19','2019-10-14 10:46:19'),(15,6,'10-14-2019_17:46:29i5-9400F.jpg','2019-10-14 10:46:29','2019-10-14 10:46:29'),(16,5,'10-14-2019_17:47:15i3-9100F.jpg','2019-10-14 10:47:15','2019-10-14 10:47:15'),(17,8,'10-14-2019_17:47:24G5400.jpg','2019-10-14 10:47:24','2019-10-14 10:47:24'),(18,9,'10-14-2019_17:47:48msi-b450m-pro-vdh-plus.png','2019-10-14 10:47:48','2019-10-14 10:47:48'),(19,10,'10-14-2019_17:48:04main-msi-b360-pro-f-main-bitcoin-no-suport-nvme.jpg','2019-10-14 10:48:04','2019-10-14 10:48:04'),(20,11,'10-14-2019_17:48:17mainboard-asrock-b365-phantom-gaming-4-atx-giam-150k-build-theo-case-con-2-550k.png','2019-10-14 10:48:17','2019-10-14 10:48:17'),(21,12,'10-14-2019_17:48:33Mainboard-GIGABYTE-Z390-AORUS-ELITE-Socket-LGA1151-ATX.jpg','2019-10-14 10:48:33','2019-10-14 10:48:33'),(22,13,'10-14-2019_17:48:45msi-mag-b365m-mortar.jpg','2019-10-14 10:48:45','2019-10-14 10:48:45'),(23,14,'10-14-2019_17:48:55mainboard-gigabyte-z390-aorus-pro-wifi.jpg','2019-10-14 10:48:55','2019-10-14 10:48:55'),(24,15,'10-14-2019_17:49:04-vga-onboard-build-kem-case-giam-100k-con-2-150k.png','2019-10-14 10:49:04','2019-10-14 10:49:04'),(25,16,'10-14-2019_17:49:21vga-card-gigabyte-gtx-1660-ti-oc-6gb-n166toc-6gd.jpg','2019-10-14 10:49:21','2019-10-14 10:49:21'),(26,16,'10-14-2019_17:49:21vga-card-gigabyte-gtx-1660-ti-oc-6gb-n166toc-6gd.jpg','2019-10-14 10:49:21','2019-10-14 10:49:21'),(27,17,'10-14-2019_17:49:32vga-zotac-gtx-1060-3g-gddr5-amp-core-edition.jpg','2019-10-14 10:49:32','2019-10-14 10:49:32'),(28,18,'10-14-2019_17:49:47vga-card-msi-rx-580-gaming-x-8g.jpg','2019-10-14 10:49:47','2019-10-14 10:49:47'),(29,19,'10-14-2019_17:50:05vga-card-gigabyte-rx570-gaming-4gd-mi-2nd.jpg','2019-10-14 10:50:05','2019-10-14 10:50:05'),(30,20,'10-14-2019_17:50:17vga-inno3d-geforce-rtx-2070-super-ichill-x3-ultra-giam-700k-khi-build-kem-case-.jpg','2019-10-14 10:50:17','2019-10-14 10:50:17'),(31,21,'10-14-2019_17:50:29vga-msi-gtx-1050ti-4gt-ocv1.png','2019-10-14 10:50:29','2019-10-14 10:50:29'),(32,22,'10-14-2019_17:50:53ram-kingson-8g-hyper-x-2666-nhap-khau.jpg','2019-10-14 10:50:53','2019-10-14 10:50:53'),(33,23,'10-14-2019_17:51:04ram-asgard-loki-8g-bus-2666-rgb.jpg','2019-10-14 10:51:04','2019-10-14 10:51:04'),(34,24,'10-14-2019_17:51:15ram-corsair-vengeance-rgb-pro-16gb-2x8gb-ddr4-3000mhz.png','2019-10-14 10:51:15','2019-10-14 10:51:15'),(35,25,'10-14-2019_17:51:24g-skill-trident-z-rgb-32gb-16gbx2-ddr4-3000ghz-f4-3000c16d-32gtzr.jpg','2019-10-14 10:51:24','2019-10-14 10:51:24'),(36,26,'10-14-2019_17:51:35aerocool-lux-rgb-550w-550w-80-plus-bronze-semi-modular.jpg','2019-10-14 10:51:35','2019-10-14 10:51:35'),(37,27,'10-14-2019_17:51:45nguon-seasonic-650w-s12iii-650-80plus-bronze.jpg','2019-10-14 10:51:45','2019-10-14 10:51:45'),(38,28,'10-14-2019_17:51:53nguon-xigmatek-shogun-g-sj-g750-750w-80-plus-gold-100-tu-dien-nhat-ban.jpg','2019-10-14 10:51:53','2019-10-14 10:51:53'),(39,29,'10-14-2019_17:52:047200-sata-256mb-35-st2000dm008.jpg','2019-10-14 10:52:04','2019-10-14 10:52:04'),(40,30,'10-14-2019_17:52:13ssd-samsung-860-evo-250gb-2-5-inch-sata-iii-mz-76e250bw.jpg','2019-10-14 10:52:13','2019-10-14 10:52:13');
+INSERT INTO `product_images` VALUES (3,10,'3.jpg','2019-10-14 03:38:28','2019-10-14 03:40:21'),(4,10,'2.jpg','2019-10-14 03:38:35','2019-10-14 03:38:35'),(5,23,'ram-asgard-loki-8g-bus-2666-rgb-2.jpg','2019-10-14 04:42:48','2019-10-14 04:42:48'),(6,22,'ram-kingson-8g-hyper-x-2666-nhap-khau-2.jpg','2019-10-14 04:43:30','2019-10-14 04:43:30'),(9,1,'10-14-2019_17_45_25i5-3570.jpg','2019-10-14 10:45:25','2019-10-14 10:45:25'),(10,2,'10-14-2019_17_45_47R7-3700X.jpg','2019-10-14 10:45:47','2019-10-14 10:45:47'),(11,3,'10-14-2019_17_46_00i5-3470.jpg','2019-10-14 10:46:00','2019-10-14 10:46:00'),(12,4,'10-14-2019_17_46_08i7-3770.jpg','2019-10-14 10:46:08','2019-10-14 10:46:08'),(13,7,'10-14-2019_17_46_19i9-9900K.jpg','2019-10-14 10:46:19','2019-10-15 10:36:54'),(15,6,'10-14-2019_17_46_29i5-9400F.jpg','2019-10-14 10:46:29','2019-10-14 10:46:29'),(16,5,'10-14-2019_17_47_15i3-9100F.jpg','2019-10-14 10:47:15','2019-10-14 10:47:15'),(17,8,'10-14-2019_17_47_24G5400.jpg','2019-10-14 10:47:24','2019-10-14 10:47:24'),(18,9,'10-14-2019_17_47_48msi-b450m-pro-vdh-plus.png','2019-10-14 10:47:48','2019-10-14 10:47:48'),(19,10,'10-14-2019_17_48_04main-msi-b360-pro-f-main-bitcoin-no-suport-nvme.jpg','2019-10-14 10:48:04','2019-10-14 10:48:04'),(20,11,'10-14-2019_17_48_17mainboard-asrock-b365-phantom-gaming-4-atx-giam-150k-build-theo-case-con-2-550k.png','2019-10-14 10:48:17','2019-10-14 10:48:17'),(21,12,'10-14-2019_17_48_33Mainboard-GIGABYTE-Z390-AORUS-ELITE-Socket-LGA1151-ATX.jpg','2019-10-14 10:48:33','2019-10-14 10:48:33'),(22,13,'10-14-2019_17_48_45msi-mag-b365m-mortar.jpg','2019-10-14 10:48:45','2019-10-14 10:48:45'),(23,14,'10-14-2019_17_48_55mainboard-gigabyte-z390-aorus-pro-wifi.jpg','2019-10-14 10:48:55','2019-10-14 10:48:55'),(24,15,'10-14-2019_17_49_04-vga-onboard-build-kem-case-giam-100k-con-2-150k.png','2019-10-14 10:49:04','2019-10-14 10:49:04'),(25,16,'10-14-2019_17_49_21vga-card-gigabyte-gtx-1660-ti-oc-6gb-n166toc-6gd.jpg','2019-10-14 10:49:21','2019-10-14 10:49:21'),(26,16,'10-14-2019_17_49_21vga-card-gigabyte-gtx-1660-ti-oc-6gb-n166toc-6gd.jpg','2019-10-14 10:49:21','2019-10-14 10:49:21'),(27,17,'10-14-2019_17_49_32vga-zotac-gtx-1060-3g-gddr5-amp-core-edition.jpg','2019-10-14 10:49:32','2019-10-14 10:49:32'),(28,18,'10-14-2019_17_49_47vga-card-msi-rx-580-gaming-x-8g.jpg','2019-10-14 10:49:47','2019-10-14 10:49:47'),(29,19,'10-14-2019_17_50_05vga-card-gigabyte-rx570-gaming-4gd-mi-2nd.jpg','2019-10-14 10:50:05','2019-10-14 10:50:05'),(30,20,'10-14-2019_17_50_17vga-inno3d-geforce-rtx-2070-super-ichill-x3-ultra-giam-700k-khi-build-kem-case-.jpg','2019-10-14 10:50:17','2019-10-14 10:50:17'),(31,21,'10-14-2019_17_50_29vga-msi-gtx-1050ti-4gt-ocv1.png','2019-10-14 10:50:29','2019-10-14 10:50:29'),(32,22,'10-14-2019_17_50_53ram-kingson-8g-hyper-x-2666-nhap-khau.jpg','2019-10-14 10:50:53','2019-10-14 10:50:53'),(33,23,'10-14-2019_17_51_04ram-asgard-loki-8g-bus-2666-rgb.jpg','2019-10-14 10:51:04','2019-10-14 10:51:04'),(34,24,'10-14-2019_17_51_15ram-corsair-vengeance-rgb-pro-16gb-2x8gb-ddr4-3000mhz.png','2019-10-14 10:51:15','2019-10-14 10:51:15'),(35,25,'10-14-2019_17_51_24g-skill-trident-z-rgb-32gb-16gbx2-ddr4-3000ghz-f4-3000c16d-32gtzr.jpg','2019-10-14 10:51:24','2019-10-14 10:51:24'),(36,26,'10-14-2019_17_51_35aerocool-lux-rgb-550w-550w-80-plus-bronze-semi-modular.jpg','2019-10-14 10:51:35','2019-10-14 10:51:35'),(37,27,'10-14-2019_17_51_45nguon-seasonic-650w-s12iii-650-80plus-bronze.jpg','2019-10-14 10:51:45','2019-10-14 10:51:45'),(38,28,'10-14-2019_17_51_53nguon-xigmatek-shogun-g-sj-g750-750w-80-plus-gold-100-tu-dien-nhat-ban.jpg','2019-10-14 10:51:53','2019-10-14 10:51:53'),(39,29,'10-14-2019_17_52_047200-sata-256mb-35-st2000dm008.jpg','2019-10-14 10:52:04','2019-10-14 10:52:04'),(40,30,'10-14-2019_17_52_13ssd-samsung-860-evo-250gb-2-5-inch-sata-iii-mz-76e250bw.jpg','2019-10-14 10:52:13','2019-10-14 10:52:13');
 /*!40000 ALTER TABLE `product_images` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -310,4 +314,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-10-15 17:24:29
+-- Dump completed on 2019-10-23 15:16:18

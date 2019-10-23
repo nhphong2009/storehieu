@@ -32,8 +32,8 @@ if(isset($_REQUEST['ok']))
     $link = "";
     if ( strlen($_FILES["fUpload"]["name"]) > 0)
     {
-        move_uploaded_file($_FILES["fUpload"]["tmp_name"], "../public/frontend/img/". date('m-d-Y_H:i:s') . $_FILES["fUpload"]["name"]);
-        $link = date('m-d-Y_H:i:s').$_FILES["fUpload"]["name"];
+        move_uploaded_file($_FILES["fUpload"]["tmp_name"], "../public/frontend/img/". date('m-d-Y_H_i_s') . $_FILES["fUpload"]["name"]);
+        $link = date('m-d-Y_H_i_s').$_FILES["fUpload"]["name"];
     } else {
         $link = $_POST['hImage'];
     }

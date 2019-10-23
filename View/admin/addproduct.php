@@ -57,8 +57,8 @@ if(isset($_REQUEST['ok']))
                 </script>
                 <?php
             } else {
-                move_uploaded_file($_FILES["fUpload"]["tmp_name"], "../public/frontend/img/" . $_FILES["fUpload"]["name"]);
-                $thumbnail = $_FILES["fUpload"]["name"];
+                move_uploaded_file($_FILES["fUpload"]["tmp_name"], "../public/frontend/img/". date('m-d-Y_H_i_s') . $_FILES["fUpload"]["name"]);
+                $thumbnail = date('m-d-Y_H_i_s').$_FILES["fUpload"]["name"];
             }
         }
     } else {
