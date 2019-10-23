@@ -65,7 +65,7 @@
                                     <?php
                                 }
                             ?>
-                            <li><a href="#">Xem giỏ hàng</a></li>
+                            <li><a href="./addtocart.php">Xem giỏ hàng</a></li>
                         </ul>
                     </div>
                 </div>
@@ -77,7 +77,6 @@
     <!-- /top footer -->
 </footer>
 <!-- /FOOTER -->
-
 <!-- jQuery Plugins -->
 <script src="../../View/public/frontend/js/jquery.min.js"></script>
 <script src="../../View/public/frontend/js/bootstrap.min.js"></script>
@@ -86,9 +85,9 @@
 <script src="../../View/public/frontend/js/jquery.zoom.min.js"></script>
 <script src="../../View/public/frontend/js/main.js"></script>
 <script>
-    $('.add-to-cart-btn').click(function(){
-        window.location.href = "http://storehieu.local.com/View/frontend/addtocart.php";
-    })
+    function moveToDetail(slug) {
+        window.location.href = "http://storehieu.local.com/View/frontend/productdetail.php?slug="+ slug;
+    }
 </script>
 </body>
 </html>

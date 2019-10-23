@@ -96,7 +96,7 @@
                                             <!-- product -->
                                             <div class="product">
                                                 <div class="product-img">
-                                                    <img src="../../View/public/frontend/img/<?php echo $lstpro->thumbnail; ?>" alt="">
+                                                    <img class="thumbnail" src="../../View/public/frontend/img/<?php echo $lstpro->thumbnail; ?>" alt="">
                                                 </div>
                                                 <div class="product-body">
                                                     <p class="product-category"><?php echo $servicecate1->laychitietdanhmuc($lstpro->category_id)->name; ?></p>
@@ -104,7 +104,7 @@
                                                     <h4 class="product-price"><?php echo number_format($lstpro->price); ?>VNĐ</h4>
                                                 </div>
                                                 <div class="add-to-cart">
-                                                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>
+                                                    <button class="add-to-cart-btn" onclick="moveToDetail('<?php echo $lstpro->slug; ?>')"><i class="fa fa-shopping-cart"></i>
                                                         thêm vào giỏ hàng
                                                     </button>
                                                 </div>
@@ -167,12 +167,13 @@
                                                 <img src="../../View/public/frontend/img/<?php echo $lstprotopsell->thumbnail; ?>" alt="">
                                             </div>
                                             <div class="product-body">
+                                                <div class="getData" style="display: none" data-thumbnail="<?php echo $lstprotopsell->thumbnail; ?>" data-name="<?php echo $lstprotopsell->name; ?>" data-price="<?php echo $lstprotopsell->price; ?>" data-slug="<?php echo $lstprotopsell->slug; ?>"></div>
                                                 <p class="product-category"><?php echo $servicecate2->laychitietdanhmuc($lstprotopsell->category_id)->name; ?></p>
                                                 <h3 class="product-name"><a href="../../View/frontend/productdetail.php?slug=<?php echo $lstprotopsell->slug ?>"><?php echo $lstprotopsell->code; ?></a></h3>
                                                 <h4 class="product-price"><?php echo number_format($lstprotopsell->price); ?>VNĐ</h4>
                                             </div>
                                             <div class="add-to-cart">
-                                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> thêm vào giỏ hàng</button>
+                                                <button class="add-to-cart-btn" onclick="moveToDetail('<?php echo $lstprotopsell->slug; ?>')"><i class="fa fa-shopping-cart"></i> thêm vào giỏ hàng</button>
                                             </div>
                                         </div>
                                         <!-- /product -->

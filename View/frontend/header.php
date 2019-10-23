@@ -7,6 +7,8 @@
     include('../../Model/datacategories.php');
     include('../../Model/datacustomers.php');
     include('../../Model/datacontacts.php');
+    include('../../Model/dataorders.php');
+    include('../../Model/dataorderdetails.php');
     include('../../Controller/functionproducts.php');
     include('../../Controller/functionproductimages.php');
     include('../../Controller/functionattributes.php');
@@ -14,6 +16,8 @@
     include('../../Controller/functioncategories.php');
     include('../../Controller/functioncustomers.php');
     include('../../Controller/functioncontacts.php');
+    include('../../Controller/functionorders.php');
+    include('../../Controller/functionorderdetails.php');
 $servicecate = new functioncategories();
 
 session_start();
@@ -116,7 +120,7 @@ $tuKhoa = "";
                     <div class="header-ctn">
                         <!-- Cart -->
                         <div>
-                            <a href="#" aria-expanded="true">
+                            <a href="./addtocart.php" aria-expanded="true">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>Giỏ hàng</span>
                             </a>

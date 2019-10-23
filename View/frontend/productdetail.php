@@ -73,7 +73,7 @@
                         <div class="qty-label">
                             Qty
                             <div class="input-number">
-                                <input type="number" value="1">
+                                <input type="number" class="quantity" value="1">
                                 <span class="qty-up">+</span>
                                 <span class="qty-down">-</span>
                             </div>
@@ -159,3 +159,29 @@
 </div>
 <!-- /SECTION -->
 <?php include('./footer.php'); ?>
+<script>
+    $('.add-to-cart-btn').click(function () {
+        var pro_slug = "<?php echo $pro->slug; ?>";
+        var pro_name = "<?php echo $pro->name; ?>";
+        var pro_price = <?php echo $pro->price; ?>;
+        var pro_qty = $('.quantity').val();
+        var pro_img = "<?php echo $pro->thumbnail; ?>";
+        var action = "add";
+        $.ajax({
+            url:"action.php",
+            method:"POST",
+            data:{
+                product_slug:pro_slug,
+                product_name:pro_name,
+                product_price:pro_price,
+                product_quantity:pro_qty,
+                product_image:pro_img,
+                action:action
+            },
+            success:function(response)
+            {
+                alert("Sản phẩm đã được thêm vào giỏ hàng");
+            }
+        });
+    })
+</script>

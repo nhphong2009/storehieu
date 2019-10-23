@@ -1469,6 +1469,26 @@ textarea.input {
 }
 
 /*----------------------------*\
+	Add to card
+\*----------------------------*/
+.empty {
+  width: 20%;
+  float: right;
+  margin: 20px 0;
+}
+.checkout {
+  width: 20%;
+  float: right;
+  margin: 20px 0;
+  background-color: red;
+  color: #fff;
+}
+.checkout:hover {
+  transition-duration: 2s;
+  background-color: black;
+  color: #fff;
+}
+/*----------------------------*\
 	Product details
 \*----------------------------*/
 

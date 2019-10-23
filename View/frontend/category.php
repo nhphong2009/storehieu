@@ -53,7 +53,7 @@
                                 <h4 class="product-price"><?php echo number_format($pro->price); ?> VNĐ</h4>
                             </div>
                             <div class="add-to-cart">
-                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> thêm vào giỏ
+                                <button class="add-to-cart-btn" onclick="moveToDetail('<?php echo $pro->slug; ?>')"><i class="fa fa-shopping-cart"></i> thêm vào giỏ
                                     hàng
                                 </button>
                             </div>
