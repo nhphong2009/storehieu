@@ -91,7 +91,7 @@ if(isset($_REQUEST['ok']))
 <?php include('./footer.php'); ?>
 <script>
     $('#back_page').click(function(){
-        window.location.href = "http://storehieu.local.com/View/admin/categories.php";
+        window.location.href = "../admin/categories.php";
     });
     $(document).ready(function () {
         $('#name_add').keyup(function () {

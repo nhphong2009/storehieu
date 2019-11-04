@@ -17,7 +17,7 @@
                 $row = mysqli_fetch_assoc($result);
                 if ($password == $row['password']){
                     $_SESSION['username'] = $row['username'];
-                    echo "<script>alert('Đăng nhập thành công');window.location.href='http://storehieu.local.com/View/admin/admin.php';</script>";
+                    echo "<script>alert('Đăng nhập thành công');window.location.href='../admin/admin.php';</script>";
                     return true;
                 }
                 else {

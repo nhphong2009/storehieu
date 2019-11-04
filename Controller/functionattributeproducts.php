@@ -50,7 +50,7 @@
         {
             $lstthuoctinhsanpham = Array();
 
-            $SQL = "Select attribute_products.id as attrpro_id, attribute_id, product_id, value, code, name from attribute_products inner join attributes on attribute_products.attribute_id = attributes.id where value='Mở' and name='New Product'";
+            $SQL = "Select attribute_products.id as attrpro_id, attribute_id, product_id, value, code, name from attribute_products inner join attributes on attribute_products.attribute_id = attributes.id where value='Mở' and name='New Product'order by attrpro_id desc limit 5";
 
             $q = mysqli_query($this->ketNoi,$SQL);
 
@@ -78,7 +78,7 @@
         {
             $lstthuoctinhsanpham = Array();
 
-            $SQL = "Select attribute_products.id as attrpro_id, attribute_id, product_id, value, code, name from attribute_products inner join attributes on attribute_products.attribute_id = attributes.id where value='Mở' and name='Top Selling'";
+            $SQL = "Select attribute_products.id as attrpro_id, attribute_id, product_id, value, code, name from attribute_products inner join attributes on attribute_products.attribute_id = attributes.id where value='Mở' and name='Top Selling' order by attrpro_id desc limit 5";
 
             $q = mysqli_query($this->ketNoi,$SQL);
 
@@ -106,7 +106,7 @@
         {
             $lstthuoctinhsanpham = Array();
 
-            $SQL = "Select attribute_products.id as attrpro_id, attribute_id, product_id, value, code, name from attribute_products inner join attributes on attribute_products.attribute_id = attributes.id where value='Mở' and name='Feature Product'";
+            $SQL = "Select attribute_products.id as attrpro_id, attribute_id, product_id, value, code, name from attribute_products inner join attributes on attribute_products.attribute_id = attributes.id where value='Mở' and name='Feature Product'order by attrpro_id desc limit 5";
 
             $q = mysqli_query($this->ketNoi,$SQL);
 
@@ -184,6 +184,32 @@
             return $objthuoctinhsanpham;
         }
 
+        function laychitietthuoctinhsanphamtheoidsanpham($product_id)
+        {
+            $objthuoctinhsanpham = new dataattributeproducts();
+
+            $SQL = "Select attribute_products.id as attrpro_id, attribute_id, product_id, value, code, name from attribute_products inner join attributes on attribute_products.attribute_id = attributes.id where value='Mở' and name='New Product' and product_id=". $product_id;
+
+            $q = mysqli_query($this->ketNoi,$SQL);
+
+            while($row = mysqli_fetch_array($q))
+            {
+                $objthuoctinhsanpham = new dataattributeproducts();
+
+                $objthuoctinhsanpham->id = $row['id'];
+
+                $objthuoctinhsanpham->attribute_id = $row['attribute_id'];
+
+                $objthuoctinhsanpham->product_id = $row['product_id'];
+
+                $objthuoctinhsanpham->value = $row['value'];
+            }
+
+            $this->ketNoi->close();
+
+            return $objthuoctinhsanpham;
+        }
+
 		public function themMoi($chitietthuoctinh)
         {
             $sql = "INSERT INTO attribute_products(attribute_id, product_id, value) VALUES('$chitietthuoctinh->attribute_id', '$chitietthuoctinh->product_id', '$chitietthuoctinh->value')";
@@ -196,6 +222,15 @@
             {
                 echo "<script>alert('Thêm mới chi tiết thuộc tính thành công!');history.back();</script>";
             }
+        }
+
+		public function themMoiincheckout($chitietthuoctinh)
+        {
+            $sql = "INSERT INTO attribute_products(attribute_id, product_id, value) VALUES('$chitietthuoctinh->attribute_id', '$chitietthuoctinh->product_id', '$chitietthuoctinh->value')";
+
+            $q = mysqli_query($this->ketNoi,$sql);
+
+            $this->ketNoi->close();
         }
 
         public function capNhat($chitietthuoctinh)

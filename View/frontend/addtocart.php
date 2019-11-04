@@ -79,7 +79,7 @@
 <?php include('./footer.php'); ?>
 <script>
     $('.checkout').click(function () {
-        window.location.href = 'http://storehieu.local.com/View/frontend/checkout.php';
+        window.location.href = '../frontend/checkout.php';
     })
     $('.empty').click(function () {
         var action = "empty";

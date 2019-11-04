@@ -1,7 +1,7 @@
 <?php include('./header.php'); ?>
 <?php
     if(empty($_SESSION['shopping_cart'])){
-        echo "<script> window.location.href = 'http://storehieu.local.com/View/frontend/index.php' </script>";
+        echo "<script> window.location.href = '../frontend/index.php' </script>";
     } else {
         $name = "";
         $phone = 0;
@@ -46,6 +46,17 @@
                         $objorderdetail->created_at = date('Y-m-d H:i:s');
                         $objorderdetail->updated_at = date('Y-m-d H:i:s');
                         $serviceorderdetail->themMoi($objorderdetail);
+                        //Add New Product (Like Feature)
+                        $serviceattrpro2 = new functionattributeproducts();
+                        $getPro = $serviceattrpro2->laychitietthuoctinhsanphamtheoidsanpham($proslug->id);
+                        if($getPro->value != "Mở") {
+                            $serviceattrpro3 = new functionattributeproducts();
+                            $attrpro1 = new dataattributeproducts();
+                            $attrpro1->attribute_id = 11;
+                            $attrpro1->value = "Mở";
+                            $attrpro1->product_id = $proslug->id;
+                            $serviceattrpro3->themMoiincheckout($attrpro1);
+                        }
                     }
                 }
             }
@@ -83,6 +94,17 @@
                         $objorderdetail1->created_at = date('Y-m-d H:i:s');
                         $objorderdetail1->updated_at = date('Y-m-d H:i:s');
                         $serviceorderdetail1->themMoi($objorderdetail1);
+                        //Add New Product (Like Feature)
+                        $serviceattrpro = new functionattributeproducts();
+                        $getPro = $serviceattrpro->laychitietthuoctinhsanphamtheoidsanpham($proslug1->id);
+                        if($getPro->value != "Mở") {
+                            $serviceattrpro1 = new functionattributeproducts();
+                            $attrpro = new dataattributeproducts();
+                            $attrpro->attribute_id = 11;
+                            $attrpro->value = "Mở";
+                            $attrpro->product_id = $proslug1->id;
+                            $serviceattrpro1->themMoiincheckout($attrpro);
+                        }
                     }
                 }
             }

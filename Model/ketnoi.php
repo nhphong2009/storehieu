@@ -3,7 +3,7 @@
 	{
 		public static function getConnection()
 		{
-			$con = new mysqli("localhost","root","phong119988","storeHieu");
+			$con = new mysqli("localhost","root","phong119988","storehieu");
 			if($con->connect_error)
 			{
 				die("Kết nối đến MySQL bị lỗi. Chi tiết: " . 

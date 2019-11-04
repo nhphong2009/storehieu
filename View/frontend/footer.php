@@ -9,7 +9,11 @@
                 <div class="col-md-3 col-xs-6">
                     <div class="footer">
                         <h3 class="footer-title">Về chúng tôi</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+                        <p>
+                            Nguyễn Minh Hiếu 06/03/1998<br/>
+                            Nguyễn Hữu Huân 20/08/1998<br/>
+                            Lê Văn Hưởng 24/12/1998
+                        </p>
                         <ul class="footer-links">
                             <li><a href="#"><i class="fa fa-map-marker"></i>Hà Nội</a></li>
                             <li><a href="#"><i class="fa fa-phone"></i>0111-111-111</a></li>
@@ -86,7 +90,7 @@
 <script src="../../View/public/frontend/js/main.js"></script>
 <script>
     function moveToDetail(slug) {
-        window.location.href = "http://storehieu.local.com/View/frontend/productdetail.php?slug="+ slug;
+        window.location.href = "../frontend/productdetail.php?slug="+ slug;
     }
 </script>
 </body>

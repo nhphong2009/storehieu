@@ -10,6 +10,6 @@ $ketQua = $service->xoakhachhang($id);
 
 if($ketQua)
 {
-    echo "<script>alert('Xóa thành công!'); window.location.href = 'http://storehieu.local.com/View/admin/customers.php'; </script>";
+    echo "<script>alert('Xóa thành công!'); window.location.href = '../admin/customers.php'; </script>";
 }
 ?>

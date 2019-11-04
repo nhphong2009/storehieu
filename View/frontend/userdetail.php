@@ -50,7 +50,7 @@ if(isset($_REQUEST['btnOK'])) {
         ?>
         <script>
             alert('Mật khẩu và nhập lại mật khẩu không trùng khớp');
-            window.location.href = 'http://storehieu.local.com/View/admin/addcustomer.php';
+            window.location.href = '../frontend/addcustomer.php';
         </script>
         <?php
     }

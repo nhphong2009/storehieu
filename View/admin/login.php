@@ -11,7 +11,7 @@ if(!isset($_SESSION['username'])) {
         $servicecus->laychitietadmin($_POST['username'], $_POST['password']);
     }
 } else {
-    header('location: http://storehieu.local.com/View/admin/admin.php');
+    header('../admin/admin.php');
 }
 ?>
 <!DOCTYPE html>

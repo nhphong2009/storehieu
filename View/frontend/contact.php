@@ -82,7 +82,11 @@ if(isset($_REQUEST['btnOK']))
                     <div class="section-title">
                         <h3 class="title">Về chúng tôi</h3>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+                    <p>
+                        Nguyễn Minh Hiếu 06/03/1998<br/>
+                        Nguyễn Hữu Huân 20/08/1998<br/>
+                        Lê Văn Hưởng 24/12/1998
+                    </p>
                     <ul class="footer-links">
                         <li><a href="#"><i class="fa fa-map-marker"></i>Hà Nội</a></li>
                         <li><a href="#"><i class="fa fa-phone"></i>0111-111-111</a></li>
